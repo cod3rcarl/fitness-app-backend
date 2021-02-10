@@ -1,5 +1,6 @@
 const express = require("express");
 const multer = require("multer");
+const path = require("path");
 
 const UserController = require("../controllers/UserController");
 const EventController = require("../controllers/EventController");
@@ -15,8 +16,10 @@ const uploadToS3 = require("../../config/s3Uploads");
 
 const router = express.Router();
 
-router.get("/status", (req, res) => {
-  res.send({ status: 200 });
+router.get("/endpoints", (req, res) => {
+  res.sendFile(
+    path.resolve(__dirname, "..", "..", "config", "fitness-app.json")
+  );
 });
 
 // TODO: SUBSCRIBE CONTROLLER
