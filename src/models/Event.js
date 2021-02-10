@@ -42,7 +42,7 @@ const EventSchema = new mongoose.Schema(
 );
 EventSchema.virtual("thumbnail_url").get(function() {
   return this.thumbnail === undefined
-    ? `http://localhost:8000/files/background.jpg`
+    ? `http://localhost:8000/assets/background.jpg`
     : this.thumbnail;
 });
 
