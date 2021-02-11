@@ -7,18 +7,21 @@ const config = require("../../config/config");
 module.exports = {
   async store(req, res) {
     try {
+      console.log("did it get here");
       const { email, password } = req.body;
-
+      console.log("worked");
       if (!email || !password) {
         return res.status(200).json({ message: "Required field missing" });
       }
 
       const user = await User.findOne({ email });
+      console.log("worked");
       if (!user) {
         return res.status(200).json({ message: "User not found" });
       }
 
       if (user && (await bcrypt.compare(password, user.password))) {
+        console.log("worked");
         const userResponse = {
           _id: user._id,
           firstName: user.firstName,

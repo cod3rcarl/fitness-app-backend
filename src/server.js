@@ -25,7 +25,7 @@ const io = require("socket.io")(server, {
 const PORT = config.PORT || 8000;
 
 connectDB();
-
+console.log("database connected");
 const connectedUsers = {};
 
 io.on("connection", (socket) => {
